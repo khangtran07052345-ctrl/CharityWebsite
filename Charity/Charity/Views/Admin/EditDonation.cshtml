@@ -1,0 +1,47 @@
+﻿@model Charity.Models.Donation
+@{
+    ViewBag.Title = "Sửa khoản quyên góp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool isInKind = Model.DonationType == "InKind";
+}
+
+<div class="container py-4" style="max-width:700px">
+    <h3>Sửa khoản quyên góp @Model.TransactionCode</h3>
+    <p class="text-muted">
+        Chiến dịch: @Model.Campaign.Title — Người quyên góp: @Model.User.FullName
+    </p>
+
+    <form method="post" action="@Url.Action("EditDonation", "Admin")">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="Id" value="@Model.Id" />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+        @if (isInKind)
+        {
+            <label class="form-label">Tên hiện vật</label>
+            @Html.TextBox("ItemName", Model.ItemName, new { @class = "form-control mb-2" })
+            <label class="form-label">Số lượng</label>
+            @Html.TextBox("Quantity", Model.Quantity, new { @class = "form-control mb-2" })
+            <label class="form-label">Đơn vị</label>
+            @Html.TextBox("Unit", Model.Unit, new { @class = "form-control mb-2" })
+            <label class="form-label">Số điện thoại liên hệ</label>
+            @Html.TextBox("ContactPhone", Model.ContactPhone, new { @class = "form-control mb-2" })
+        }
+        else
+        {
+            <label class="form-label">Số tiền (VNĐ)</label>
+            @Html.TextBox("Amount", Model.Amount.ToString("0"), new { @class = "form-control mb-2" })
+        }
+
+        <label class="form-label">Lời nhắn</label>
+        @Html.TextArea("Message", Model.Message, new { @class = "form-control mb-2", rows = 3 })
+
+        <div class="form-check mb-3">
+            @Html.CheckBox("IsAnonymous", Model.IsAnonymous ?? false, new { @class = "form-check-input" })
+            <label class="form-check-label" for="IsAnonymous">Quyên góp ẩn danh</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <a href="@Url.Action("Donations", "Admin")" class="btn btn-outline-secondary">Hủy</a>
+    </form>
+</div>
