@@ -1,0 +1,208 @@
+﻿
+@model PagedList.IPagedList<Charity.Models.CampaignViewModel>
+@using PagedList.Mvc
+@using System.Globalization
+
+@{
+    ViewBag.Title = "Danh sách chiến dịch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var vi = new CultureInfo("vi-VN");
+    string status = ViewBag.Status as string;
+}
+
+@section styles {
+    <link href="@Url.Content("~/Content/charity-campaign.css")"
+          rel="stylesheet" />
+}
+
+<div class="charity-campaign-page">
+
+    <section class="campaign-page-hero">
+        <div class="container campaign-container">
+
+            <span>CHUNG TAY VÌ CỘNG ĐỒNG</span>
+
+            <h1>
+                Những chiến dịch<br />
+                <strong>trao gửi yêu thương.</strong>
+            </h1>
+
+            <p>
+                Tìm hiểu những hoàn cảnh cần hỗ trợ và cùng
+                CHARITY lan tỏa những hành động ý nghĩa.
+            </p>
+
+            <div class="campaign-breadcrumb">
+                <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                <span>/</span>
+                <strong>Chiến dịch</strong>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="container campaign-container campaign-list py-5">
+
+        <!-- TIÊU ĐỀ KHU VỰC CHIẾN DỊCH -->
+        <div class="campaign-section-heading">
+            <div>
+                <span>KHÁM PHÁ VÀ ĐỒNG HÀNH</span>
+                <h2>Các chiến dịch thiện nguyện</h2>
+                <p>Chọn một chiến dịch để tìm hiểu và chung tay hỗ trợ.</p>
+            </div>
+        </div>
+
+        <!-- TÌM KIẾM VÀ LỌC -->
+        <div class="campaign-filter-panel">
+            <form method="get"
+                  action="@Url.Action("Index", "Campaign")"
+                  class="row g-2 mb-4">
+
+                <div class="col-md-6">
+                    <input type="text"
+                           name="keyword"
+                           value="@ViewBag.Keyword"
+                           class="form-control"
+                           placeholder="Tìm chiến dịch theo tên..." />
+                </div>
+
+                <div class="col-md-3">
+                    <select name="status" class="form-select">
+                        <option value="">Tất cả trạng thái</option>
+
+                        <option value="ongoing"
+                                @(status == "ongoing" ? "selected" : "")>
+                            Đang diễn ra
+                        </option>
+
+                        <option value="reached"
+                                @(status == "reached" ? "selected" : "")>
+                            Đạt mục tiêu
+                        </option>
+
+                        <option value="ended"
+                                @(status == "ended" ? "selected" : "")>
+                            Đã kết thúc
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <button type="submit"
+                            class="btn btn-primary w-100">
+                        Tìm kiếm
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- DANH SÁCH CHIẾN DỊCH -->
+        <div class="row g-4">
+
+            @if (Model == null || !Model.Any())
+            {
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        Không tìm thấy chiến dịch phù hợp.
+                    </div>
+                </div>
+            }
+            else
+            {
+                foreach (var c in Model)
+                {
+                    int progress = Math.Max(0, Math.Min(100, c.ProgressPercent));
+
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+
+                        <div class="campaign-card">
+
+                            <!-- ẢNH RIÊNG CỦA TỪNG CHIẾN DỊCH -->
+                            @if (!string.IsNullOrWhiteSpace(c.ImageUrl))
+                            {
+                                <img src="@Url.Content(c.ImageUrl)"
+                                     alt="@c.Title"
+                                     class="campaign-image" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Image/images (4).jpg")"
+                                     alt="Ảnh mặc định"
+                                     class="campaign-image" />
+                            }
+
+                            <div class="campaign-content">
+
+                                <span class="campaign-status">
+                                    @c.StatusText
+                                </span>
+
+                                <h4>
+                                    @c.Title
+                                </h4>
+
+                                <p class="campaign-description">
+                                    @c.Description
+                                </p>
+
+                                <!-- TIẾN ĐỘ -->
+                                <div class="progress-track">
+                                    <div class="progress-fill"
+                                         style="width: @(progress)%;">
+                                    </div>
+                                </div>
+
+                                <div class="money-info">
+                                    <strong>
+                                        @c.RaisedAmount.ToString("N0", vi) đ
+                                    </strong>
+
+                                    <strong>
+                                        @progress%
+                                    </strong>
+                                </div>
+
+                                <div class="money-info">
+                                    <span>Đã quyên góp</span>
+
+                                    <span>
+                                        Mục tiêu
+                                        @((c.TargetAmount / 1000000m).ToString("0.##", vi))
+                                        triệu
+                                    </span>
+                                </div>
+
+                                <!-- XEM CHI TIẾT -->
+                                <a href="@Url.Action("Details", "Campaign", new { id = c.Id })"
+                                   class="campaign-button">
+                                    Xem chi tiết
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+
+        <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+        <div class="d-flex justify-content-center mt-4">
+            @Html.PagedListPager(
+                     Model,
+                     page => Url.Action("Index", new
+                     {
+                         page,
+                         keyword = ViewBag.Keyword,
+                         status = ViewBag.Status
+                     }),
+                     PagedListRenderOptions.Classic)
+        </div>
+
+        <div class="text-center text-muted mt-2">
+            Trang @Model.PageNumber / @Model.PageCount
+            — Tổng cộng @Model.TotalItemCount chiến dịch
+        </div>
+
+    </div>

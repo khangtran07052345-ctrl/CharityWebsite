@@ -1,0 +1,173 @@
+﻿
+@model Charity.Models.CampaignViewModel
+@using System.Globalization
+
+
+@{
+    ViewBag.Title = Model.Title;
+    var vi = new CultureInfo("vi-VN");
+}
+
+@section styles {
+    <link href="@Url.Content("~/Content/charity-system.css")"
+          rel="stylesheet" />
+}
+
+<div class="container mt-3">
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-warning">
+            @TempData["Error"]
+        </div>
+    }
+
+    @if (TempData["EmailError"] != null)
+    {
+        <div class="alert alert-warning mt-2">
+            <strong>Chi tiết lỗi gửi email:</strong>
+            <br />
+            @TempData["EmailError"]
+        </div>
+    }
+
+</div>
+
+<div class="campaign-detail charity-detail-page">
+
+    <div class="row g-4 align-items-start">
+
+        <!-- Cột ảnh -->
+        <div class="col-md-6">
+
+            @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+            {
+                <img src="@Url.Content(Model.ImageUrl)"
+                     alt="@Model.Title"
+                     class="campaign-detail-image w-100 img-fluid" />
+            }
+            else
+            {
+                <img src="@Url.Content("~/Content/Image/images (4).jpg")"
+                     alt="@Model.Title"
+                     class="campaign-detail-image w-100 img-fluid" />
+            }
+
+        </div>
+
+        <!-- Cột thông tin -->
+        <div class="col-md-6">
+
+            <div class="campaign-detail-info">
+
+                <span class="badge @Model.StatusBadgeClass mb-2">
+                    @Model.StatusText
+                </span>
+
+                <h2>@Model.Title</h2>
+
+                <p class="campaign-date">
+                    Thời gian:
+                    @Model.StartDate.ToString("dd/MM/yyyy")
+                    -
+                    @Model.EndDate.ToString("dd/MM/yyyy")
+                </p>
+
+                <div class="progress mb-3" style="height: 16px;">
+
+                    <div class="progress-bar bg-success"
+                         role="progressbar"
+                         style="width: @(Model.ProgressPercent)%"
+                         aria-valuenow="@Model.ProgressPercent"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+
+                        @Model.ProgressPercent%
+
+                    </div>
+
+                </div>
+
+                <p>
+                    Đã quyên góp
+                    <strong>
+                        @Model.RaisedAmount.ToString("N0", vi)đ
+                    </strong>
+
+                    <br />
+
+                    Mục tiêu
+                    <strong>
+                        @Model.TargetAmount.ToString("N0", vi)đ
+                    </strong>
+                </p>
+
+                @if (Model.StatusKey == "ongoing")
+                {
+                    <a href="@Url.Action("Create", "Donation", new { campaignId = Model.Id })"
+                       class="btn btn-primary btn-lg w-100">
+                        ♥ Quyên góp ngay
+                    </a>
+                }
+                else
+                {
+                    <button class="btn btn-secondary btn-lg w-100" disabled>
+                        Chiến dịch không còn nhận quyên góp
+                    </button>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Phần giới thiệu -->
+    <div class="campaign-detail-description">
+
+        <h4>Giới thiệu chiến dịch</h4>
+
+        <p>@Model.Description</p>
+
+    </div>
+    @{
+        var donors = ViewBag.Donors as List<Charity.Models.Donation>;
+    }
+    <div class="campaign-detail-description mt-4">
+        <h4>Nhà hảo tâm gần đây</h4>
+        @if (donors == null || !donors.Any())
+        {
+            <p class="text-muted">Chưa có khoản quyên góp nào được xác nhận.</p>
+        }
+        else
+        {
+            <ul class="list-group">
+                @foreach (var d in donors)
+                {
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>
+                            @(d.IsAnonymous == true ? "Nhà hảo tâm ẩn danh" : d.User.FullName)
+                            @if (d.DonationType == "InKind")
+                            {
+                                <small class="text-muted"> — hiện vật: @d.ItemName</small>
+                            }
+                        </span>
+                        <span>@(d.DonationType == "InKind" ? "" : d.Amount.ToString("N0", vi) + "đ")</span>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+    <a href="@Url.Action("Index", "Campaign")"
+       class="campaign-detail-back">
+        ← Quay lại danh sách
+    </a>
+
+</div>

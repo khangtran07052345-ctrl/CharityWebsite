@@ -1,0 +1,113 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\KNM\\CharityWebsite\\Charity\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|d:\\knm\\charitywebsite\\charity\\charity\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|solutionrelative:charity\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|d:\\knm\\charitywebsite\\charity\\charity\\views\\donation\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|solutionrelative:charity\\views\\donation\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|d:\\knm\\charitywebsite\\charity\\charity\\controllers\\donationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|solutionrelative:charity\\controllers\\donationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|d:\\knm\\charitywebsite\\charity\\charity\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|solutionrelative:charity\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|d:\\knm\\charitywebsite\\charity\\charity\\services\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ABAAF02E-7457-485F-8EFF-6C7E9AC33C54}|Charity\\Charity.csproj|solutionrelative:charity\\services\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Views\\Donation\\Create.cshtml",
+              "RelativeDocumentMoniker": "Charity\\Views\\Donation\\Create.cshtml",
+              "ToolTip": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Views\\Donation\\Create.cshtml",
+              "RelativeToolTip": "Charity\\Views\\Donation\\Create.cshtml",
+              "ViewState": "AgIAAGcCAAAAAAAAAIAwwHYCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-23T06:03:47.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DonationController.cs",
+              "DocumentMoniker": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Controllers\\DonationController.cs",
+              "RelativeDocumentMoniker": "Charity\\Controllers\\DonationController.cs",
+              "ToolTip": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Controllers\\DonationController.cs",
+              "RelativeToolTip": "Charity\\Controllers\\DonationController.cs",
+              "ViewState": "AgIAAO0AAAAAAAAAAAD4v/wAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T05:59:06.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Charity\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Charity\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAPQBAAAAAAAAAAAiwP8BAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T05:56:19.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Charity\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Charity\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAswJYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T05:33:06.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PasswordHelper.cs",
+              "DocumentMoniker": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Services\\PasswordHelper.cs",
+              "RelativeDocumentMoniker": "Charity\\Services\\PasswordHelper.cs",
+              "ToolTip": "D:\\KNM\\CharityWebsite\\Charity\\Charity\\Services\\PasswordHelper.cs",
+              "RelativeToolTip": "Charity\\Services\\PasswordHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-23T05:29:22.29Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
